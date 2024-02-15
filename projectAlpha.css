@@ -1,0 +1,375 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+ 
+body{
+    height: 100vh;
+    background-color: #000;
+    background-image: url('https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1517&q=80');
+    background-size: cover;
+    background-position: center;
+    /*new */  
+    
+ 
+}
+ 
+li{
+    list-style: none;
+}
+ 
+ 
+a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+}
+ 
+a:hover{
+    color: orange;
+}
+ 
+/*Header*/
+ 
+header {
+    position: relative;
+    padding: 0 2rem;
+}
+ 
+.hidden-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    color:beige;
+ 
+}
+   
+
+ 
+.navbar{
+ 
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ 
+}
+ 
+.navbar .logo a{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+ 
+.navbar .links{
+    display: flex;
+    gap: 2rem;
+    text-align: center;
+ 
+}
+ 
+ 
+.navbar .toggle_btn{
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+ 
+ 
+.action_btn{
+    background-color: orange;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale .02 ease;
+}
+ 
+.action_btn:hover{
+    scale: 1.05;
+    color: #fff;
+ 
+}
+ 
+.action_btn:active{
+    scale: 0.95;
+}
+ 
+/*Dropdown*/
+.dropdown_menu{
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    height: 0;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height .2s cubic-bezier(
+        0.175, 0.885, 0.32, 1.275
+    );
+}
+ 
+.dropdown_menu.open{
+    height: 240px;
+}
+ 
+.dropdown_menu li{
+    padding: 0.7rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+ 
+.dropdown_menu .action_btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+ 
+ /* login*/
+ .wrapper{
+    position: absolute;
+    left: 37.5%;
+    top: 30%;    
+    width: 400px;
+    height: 400px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    transform: scale(0);
+    transition: transform .5s ease, .3s ease;
+ }
+ 
+ 
+ .wrapper.active-popup{
+    transform: scale(1);
+ }
+ 
+ 
+.wrapper.active{
+    top:26%;
+    height: 500px;
+}
+ 
+.wrapper .form-box{
+    width: 100%;
+    padding: 40px;
+  }
+ 
+.wrapper .form-box.login{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+ 
+ 
+ .wrapper.active .form-box.login{
+    transition: none;
+    transform: translateX(-400px);
+ }
+ 
+ 
+ 
+.wrapper .form-box.register{
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+ 
+.wrapper.active .form-box.register{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+ 
+  .wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #162938;
+    font-size: 2em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+  }
+ 
+  .form-box h2{
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+ 
+  }
+ 
+  .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+  }
+ 
+  .input-box label{ /* color of the lables */
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #5ba1aa;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+  }
+ 
+   .form-box.register label{ 
+    color: #64a6c5;
+   }
+ 
+  .input-box input:focus~label,
+  .input-box input:valid~label{
+    top: -5px;
+  }
+ 
+   .input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+   }
+ 
+ 
+   .input-box .icon {  
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #162938;
+    line-height: 57px;
+   }
+ 
+   .remember-forgot{
+     font-size: .9em;
+     color: #162938;
+     font-weight: 500;
+     margin: -15px 0 15px;
+     display: flex;
+     justify-content: space-between;
+   }
+ 
+   .remember-forgot label input{
+    accent-color: #097d8a; /*box check color*/
+    margin-right: 3px;
+   }
+ 
+   .remember-forgot{
+    color: #356386; /*text remember me*/
+    text-decoration: none;
+   }
+ 
+   .remember-forgot a:hover{
+    text-decoration: underline;
+    color: #77a3cc;
+   }
+   .remember-forgot a{
+    color: #77a3cc;
+   }
+ 
+   .btn{
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+   }
+ 
+   .login-register {
+    font-size: 0.96em;
+    color: #285b81;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+   }
+ 
+   .login-register p a{
+    color: #77a3cc;  /*color of Register*/
+    text-decoration: none;
+    font-weight: 600;
+ 
+   }
+ 
+ 
+   .login-register p a:hover{
+    text-decoration: underline;
+ 
+   }
+ 
+   .input-box .icon{
+    color: #1f4d52;
+   }
+ 
+ 
+/*Responsive Design*/
+ 
+@media(max-width: 992px){
+ 
+    .navbar .links,
+    .navbar .action_btn{
+        display: none;
+    }
+ 
+    .navbar .toggle_btn{
+        display:block;
+    }
+ 
+    .dropdown_menu{
+        display: block;
+    }
+    .wrapper{
+        left: 30%;
+        
+    }
+}
+ 
+@media(max-width: 576px){
+    .dropdown_menu{
+        left: 2rem;
+        width: unset;
+    }
+    .wrapper{
+        left: 15%;
+        
+    }
+}
